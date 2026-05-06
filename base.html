@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head %}{% endblock %} - Galeri Nasional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-brand">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Logo Galeri" style="height: 40px;">
+                <h2>Galeri Seni</h2>
+            </div>
+            <ul>
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/register">Pengunjung</a></li>
+                <li><a href="/admin/karya">Kelola Koleksi</a></li>
+                <li><a href="/simulasi-sensor">Sensor</a></li>
+                <li><a href="/detail">AR</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="/">Beranda</a> 
+            {% block breadcrumbs %}{% endblock %}
+        </div>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Kelompok 7 - Pengembangan Sistem Perpustakaan Digital</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

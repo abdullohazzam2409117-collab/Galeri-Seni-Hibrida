@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head %}Daftar Karya{% endblock %}
+{% block breadcrumbs %}<span>/</span> Kelola Koleksi{% endblock %}
+{% block content %}
+    <h1>Daftar Koleksi Karya Seni</h1>
+    <a href="{{ url_for('tambah_karya') }}" class="btn btn-success" style="margin-bottom: 20px;">+ Tambah Karya Baru</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Judul</th>
+                <th>Seniman</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k in karya %}
+            <tr>
+                <td>{{ k.id_karya }}</td>
+                <td>{{ k.judul }}</td>
+                <td>{{ k.seniman.nama_seniman }}</td>
+                <td>{{ k.deskripsi }}</td>
+                <td>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="{{ url_for('update_karya', id=k.id_karya) }}" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Edit</a> 
+                        <form action="{{ url_for('delete_karya', id=k.id_karya) }}" method="POST" style="margin: 0;">
+                            <button type="submit" style="background:none; border:none; color: var(--danger-color); cursor: pointer; padding: 0; font: inherit; font-weight: 600;" onclick="return confirm('Apakah Anda yakin ingin menghapus karya ini?')">Hapus</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

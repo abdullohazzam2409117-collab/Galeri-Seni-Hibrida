@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}Perbarui Karya{% endblock %}
+{% block breadcrumbs %}<span>/</span> <a href="/admin/karya">Kelola Koleksi</a> <span>/</span> Edit Karya{% endblock %}
+{% block content %}
+    <h1>Perbarui Karya Seni</h1>
+    <form action="{{ url_for('update_karya', id=karya.id_karya) }}" method="POST" class="ar-card">
+        <label>Judul Karya:</label>
+        <input type="text" name="judul" value="{{ karya.judul }}" required>
+        
+        <label>Deskripsi:</label>
+        <textarea name="deskripsi" rows="4" required>{{ karya.deskripsi }}</textarea>
+        
+        <label>Pilih Seniman:</label>
+        <select name="id_seniman">
+            {% for s in seniman %}
+                <option value="{{ s.id_seniman }}" {% if s.id_seniman == karya.id_seniman %}selected{% endif %}>
+                    {{ s.nama_seniman }}
+                </option>
+            {% endfor %}
+        </select>
+        
+        <div style="margin-top: 1rem;">
+            <button type="submit" class="btn btn-primary">SIMPAN PERUBAHAN</button>
+            <a href="{{ url_for('list_karya') }}" class="btn" style="color: var(--gray);">Batal</a>
+        </div>
+    </form>
+{% endblock %}

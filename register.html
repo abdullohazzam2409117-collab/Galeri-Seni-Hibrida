@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block head %}Registrasi Pengunjung{% endblock %}
+{% block breadcrumbs %}<span>/</span> Pengunjung{% endblock %}
+{% block content %}
+    <h1>Form Pendaftaran Pengunjung</h1>
+    <p>Silakan isi data diri Anda untuk mengakses fitur interaktif galeri.</p>
+   
+    <form action="/register" method="POST" class="ar-card">
+        <label>Nama Lengkap:</label>
+        <input type="text" name="nama" required>
+        
+        <label>Kontak (Email/WA):</label>
+        <input type="text" name="kontak" required>
+        
+        <label>Asal Daerah:</label>
+        <input type="text" name="asal_daerah" required>
+        
+        <button type="submit" class="btn btn-primary">DAFTAR SEKARANG</button>
+    </form>
+{% endblock %}

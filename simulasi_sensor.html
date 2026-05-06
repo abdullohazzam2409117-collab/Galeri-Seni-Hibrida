@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}Simulasi Sensor{% endblock %}
+{% block breadcrumbs %}<span>/</span> Sensor{% endblock %}
+{% block content %}
+    <h1>Simulasi Sensor Galeri</h1>
+    <p>Gunakan form ini untuk mensimulasikan pengunjung berada di depan karya.</p>
+    <form action="/simulasi-sensor" method="POST" class="ar-card">
+        <label>Pilih Pengunjung:</label>
+        <select name="id_pengunjung">
+            {% for item in pengunjung %}<option value="{{ item.id_pengunjung }}">{{ item.nama }}</option>{% endfor %}
+        </select>
+        
+        <label>Pilih Sensor:</label>
+        <select name="id_sensor">
+            {% for item in sensor %}<option value="{{ item.id_sensor }}">{{ item.tipe_sensor }}</option>{% endfor %}
+        </select>
+        
+        <label>Karya yang Dideteksi:</label>
+        <select name="id_karya">
+            {% for item in karya %}<option value="{{ item.id_karya }}">{{ item.judul }}</option>{% endfor %}
+        </select>
+        
+        <button type="submit" class="btn btn-primary">KIRIM SINYAL SENSOR</button>
+    </form>
+{% endblock %}

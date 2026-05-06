@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}Tambah Karya{% endblock %}
+{% block breadcrumbs %}<span>/</span> <a href="/admin/karya">Kelola Koleksi</a> <span>/</span> Tambah Karya{% endblock %}
+{% block content %}
+    <h1>Tambah Koleksi Baru</h1>
+    <form action="/admin/tambah-karya" method="POST" class="ar-card">
+        <label>Judul Karya:</label>
+        <input type="text" name="judul" required>
+        
+        <label>Deskripsi:</label>
+        <textarea name="deskripsi" rows="4" required></textarea>
+        
+        <label>Pilih Seniman:</label>
+        <select name="id_seniman">
+            {% for s in seniman %}
+                <option value="{{ s.id_seniman }}">{{ s.nama_seniman }}</option>
+            {% endfor %}
+        </select>
+        
+        <div style="margin-top: 1rem;">
+            <button type="submit" class="btn btn-primary">SIMPAN KARYA</button>
+            <a href="/admin/karya" class="btn" style="color: var(--gray);">Batal</a>
+        </div>
+    </form>
+{% endblock %}
